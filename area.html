@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Month', 'US West Coast', 'Brazil'],
+          ['July',      71,      70],
+          ['Aug',    80,      85],
+          ['Sept', 73,      85],
+          ['Oct',   71,      68],
+          ['Nov',  66,      69],
+          ['Dec',  61,      78],
+        ]);
+
+        var options = {
+          title: 'Temperature Over Span of Six Months',
+          hAxis: {title: 'Month of Year',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 100%; height: 500px;"></div>
+  </body>
+</html>

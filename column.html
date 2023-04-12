@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Country', 'GDP vs. US Trillion'],
+          ["China", 2.4],
+          ["United States", 1.6],
+          ["Canada", 1.1],
+          ["France", .9],
+        ]);
+
+        var options = {
+          width: 800,
+          legend: { position: 'none' },
+          chart: {
+            title: 'GDP of Countries',
+            subtitle: 'in US Trillion' },
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Country'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        // Convert the Classic options to Material options.
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      };
+    </script>
+  </head>
+  <body>
+    <div id="top_x_div" style="width: 800px; height: 600px;"></div>
+  </body>
+</html>
